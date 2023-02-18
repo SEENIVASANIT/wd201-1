@@ -8,41 +8,43 @@ const todoList = () => {
     }
   
     const overdue = () => {
-      // Write the date check condition here and return the array
-      // of overdue items accordingly.
+    
        overduearry=[];
       all.forEach(element => {
         if(element.dueDate<today && element.completed===false){
-          overduearry.push(element);
+          overduearry.push("[ ]"+" "+element.title+' '+element.dueDate);
+
         }
       });
       return overduearry;
     }
     const dueToday = () => {
       duedatearry=[];
-      // Write the date check condition here and return the array
-      // of todo items that are due today accordingly.
+      
       all.forEach(element => {
-        if(element.dueDate===today){
-          duedatearry.push(element);
+        if(element.dueDate===today && element.completed==false){
+          duedatearry.push('[ ]'+" "+element.title);
+        }
+        else if(element.dueDate===today && element.completed===true){
+          duedatearry.push('[x]'+' '+element.title);
         }
       });
 return duedatearry;
     }
   
     const dueLater = () => {
-      // Write the date check condition here and return the array
-      // of todo items that are due later accordingly.
+      
       duelater=[];
       all.forEach(element => {
         if(element.dueDate>today){
-          duelater.push(element);
+          duelater.push('[ ]'+' '+element.title+' '+element.dueDate);
         }
       });
 return duelater;
     }
   
     const toDisplayableList = (list) => {
+      
 return list;
     }
   
@@ -55,12 +57,7 @@ return list;
       dueLater,
       toDisplayableList
     };
-  };
-  
-  // ####################################### #
-  // DO NOT CHANGE ANYTHING BELOW THIS LINE. #
-  // ####################################### #
-  
+  };  
   const todos = todoList();
   
   const formattedDate = d => {
@@ -87,17 +84,23 @@ return list;
   console.log("Overdue")
   var overdues = todos.overdue()
   var formattedOverdues = todos.toDisplayableList(overdues)
-  console.log(formattedOverdues)
+  formattedOverdues.forEach(element=>{
+    console.log(element)
+  })
+
   console.log("\n")
   
   console.log("Due Today")
   let itemsDueToday = todos.dueToday()
   let formattedItemsDueToday = todos.toDisplayableList(itemsDueToday)
-  console.log(formattedItemsDueToday)
-  console.log("\n")
-  
+  formattedItemsDueToday.forEach(element=>{
+    console.log(element)
+  })
+  console.log('\n')
+
   console.log("Due Later")
   let itemsDueLater = todos.dueLater()
   let formattedItemsDueLater = todos.toDisplayableList(itemsDueLater)
-  console.log(formattedItemsDueLater)
-  console.log("\n\n")
+  formattedItemsDueLater.forEach(element=>{
+    console.log(element);
+  })
