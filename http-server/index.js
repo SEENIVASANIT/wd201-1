@@ -1,19 +1,13 @@
-// let args = process.argv;
-// const aa=args[3];
-// const cc=Number(aa);
+let args = process.argv;
+const aa=args[2];
+const cc=Number(aa);
+
 const readline = require("readline");
 const http=require('http');
 const fs=require('fs');
-const lineDetail = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-});
-
-lineDetail.question(`node index.js --port `, (port) => {
     
-    http.createServer(onRequest).listen(Number(port));
-  lineDetail.close();
-});
+    
+ 
 
 
 function onRequest(request,response){
@@ -53,4 +47,4 @@ function onRequest(request,response){
     }
 }
 
-//
+http.createServer(onRequest).listen(Number(cc));
